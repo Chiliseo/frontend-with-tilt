@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  # The Core Application which serves the frontend to clients and takes input from end users.
+  core:
+    image: frontend_test_core
+    build: './app'
+    container_name: core
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - NODE_ENV=local
+      - MONGO_DB_URI=db
+  # Centralized Database entity that holds all user and transaction data
+  db:
+    image: mongo
+    container_name: db-3
+    ports:
+      - "27017:27017"
+    volumes:
+      - pv-test:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=tester
+      - MONGO_INITDB_ROOT_PASSWORD=linker
+volumes:
+  pv-test:

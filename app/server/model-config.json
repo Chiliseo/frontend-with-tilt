@@ -1,0 +1,102 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "tokenSystem": {
+    "dataSource": "db",
+    "public": false
+  },
+  "appAdmin": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true
+        }
+      }
+    }
+  },
+  "company": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "create": true,
+          "deleteById": true,
+          "replaceById": true,
+          "find": true,
+          "uploadImage": true,
+          "deleteImage": true,
+          "setStatus": true,
+          "verify": true,
+          "confirm": true,
+          "count": true,
+          "setPassword": true
+        }
+      }
+    }
+  },
+  "employee": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "create": true,
+          "deleteById": true,
+          "replaceById": true,
+          "find": true,
+          "setRole": true,
+          "uploadImage": true,
+          "deleteImage": true,
+          "verify": true,
+          "confirm": true,
+          "count": true,
+          "setPassword": true
+        }
+      }
+    }
+  },
+  "login": {
+    "dataSource": null,
+    "public": true
+  },
+  "logs": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "summary": true,
+          "statistics": true
+        }
+      }
+    }
+  },
+  "directory": {
+    "dataSource": "db",
+    "public": true
+  }
+}
