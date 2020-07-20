@@ -1,0 +1,43 @@
+{
+  "name": "logs",
+  "plural": "logs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "scope": {
+    "order": "Date DESC",
+    "limit": 2000
+  },
+  "properties": {
+    "Date": {
+      "type": "date"
+    },
+    "Source": {
+      "type": "string",
+      "required": true
+    },
+    "Content": {
+      "type": "object"
+    },
+    "Outcome": {
+      "type": "boolean"
+    },
+    "Error": {
+      "type": "object"
+    },
+    "Message": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "companyLog": {
+      "type": "belongsTo",
+      "model": "company"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

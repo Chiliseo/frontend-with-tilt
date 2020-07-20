@@ -1,0 +1,42 @@
+{
+  "name": "datalink-test",
+  "author": "Kari Barry",
+  "version": "0.3.5",
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "DEBUG=loopback:connector:* node .",
+    "posttest": "npm run lint && npm audit"
+  },
+  "dependencies": {
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "helmet": "^3.16.0",
+    "lodash": "^4.17.15",
+    "loopback": "^3.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^6.5.1",
+    "loopback-connector-mongodb": "3.9.2",
+    "moment": "^2.24.0",
+    "mongodb": "3.5.4",
+    "request-promise-native": "^1.0.7",
+    "serve-favicon": "^2.0.1",
+    "strong-error-handler": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-config-loopback": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datalinksoftware/DataLink3.5"
+  },
+  "description": "Scaffolding for a frontend test environment to qualify candidates in the usage of DataLink's public APIs.",
+  "keywords": [
+    "Frontend",
+    "test"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "company",
+  "plural": "companies",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "ownerRelations": true,
+  "properties": {
+    "realm": false,
+    "username": false,
+    "companyName": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "created": {
+      "type": "string"
+    },
+    "status": {
+      "type": "object",
+      "default": {
+        "trial": {
+          "active": true,
+          "days": 30
+        },
+        "payment": {},
+        "customer": {
+          "active": false,
+          "days": 0
+        }
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "tokenSystem",
+      "polymorphic": {
+        "foreignKey": "userId",
+        "discriminator": "principalType"
+      },
+      "options": {
+        "disableInclude": true,
+        "caseSensitiveEmail": false
+      }
+    },
+    "employees": {
+      "type": "hasMany",
+      "model": "employee",
+      "foreignKey": "companyId"
+    },
+    "psa": {
+      "type": "hasOne",
+      "model": "psa",
+      "foreignKey": "companyId"
+    },
+    "crm": {
+      "type": "hasOne",
+      "model": "crm",
+      "foreignKey": "companyId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "setStatus"
+    }
+  ],
+  "methods": {}
+}
